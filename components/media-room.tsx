@@ -23,7 +23,7 @@ export const MediaRoom = ({ audio, chatId, video }: MediaRoomProps) => {
 
     (async () => {
       try {
-        const resp = await fetch(`api/livekit?room=${chatId}&username=${name}`);
+        const resp = await fetch(`/api/livekit?room=${chatId}&username=${name}`);
         const data = await resp.json();
         setToken(data.token);
       } catch (e) {

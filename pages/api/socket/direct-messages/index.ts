@@ -36,6 +36,8 @@ export default async function handler(
             memberOne: {
               profileId: profile.id,
             },
+          },
+          {
             memberTwo: {
               profileId: profile.id,
             },
@@ -44,16 +46,20 @@ export default async function handler(
       },
       include: {
         memberOne: {
-          include: { profile: true },
+          include: {
+            profile: true,
+          },
         },
         memberTwo: {
-          include: { profile: true },
+          include: {
+            profile: true,
+          },
         },
       },
     });
 
     if (!conversation) {
-      return res.status(404).json({ error: "Conversation not found" });
+      return res.status(404).json({ message: "Conversation not found" });
     }
 
     const member =
